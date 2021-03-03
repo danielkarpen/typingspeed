@@ -1,6 +1,8 @@
-function Form() {
+import PropTypes from "prop-types";
+
+function TimerForm({ handler }) {
   return (
-    <form className="flex flex-col gap-3 items-center">
+    <form className="flex flex-col gap-3 items-center" onSubmit={handler}>
       <label htmlFor="secs" className="text-2xl">
         How Long Should the Test Run?
       </label>
@@ -12,4 +14,8 @@ function Form() {
   );
 }
 
-export default Form;
+TimerForm.propTypes = {
+  handler: PropTypes.func.isRequired,
+};
+
+export default TimerForm;
