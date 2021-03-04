@@ -1,7 +1,6 @@
 import { calcWPM } from "lib";
 import { useEffect, useRef, useState } from "react";
 import Form from "./Form";
-import Info from "./Info";
 
 function Main() {
   const [secsRemaining, setSecsRemaining] = useState(null);
@@ -51,8 +50,14 @@ function Main() {
         placeholder="secs"
         buttonTxt="Go!"
       />
-      <Info msg={currentMsg} />
+      <p className="text-2xl">{currentMsg}</p>
       <textarea className="bg-gray-200 h-48 w-96" disabled ref={textareaRef} />
+      <Form
+        handler={handleSubmit}
+        label="Enter Your Initials"
+        type="text"
+        buttonTxt="Submit"
+      />
     </main>
   );
 }
