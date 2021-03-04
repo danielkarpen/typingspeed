@@ -15,7 +15,7 @@ const Form = ({ handler, type, label, placeholder, buttonTxt }) => {
         placeholder={placeholder}
         className="w-24"
       />
-      <button className="bg-neon-green cursor-pointer h-16 p-2 rounded-full text-2xl  text-gray-700 w-16 hover:animate-pulse focus:animate-pulse">
+      <button className="bg-neon-green cursor-pointer h-16 p-2 rounded text-2xl  text-gray-700 w-40 hover:animate-pulse focus:animate-pulse">
         {buttonTxt}
       </button>
     </form>
