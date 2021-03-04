@@ -1,5 +1,5 @@
 function TypingArea() {
-  return <textarea className="bg-gray-200 h-48 w-96" disabled />;
+  return <textarea className="bg-gray-200 h-48 w-96" disabled ref= />;
 }
 
-export default TypingArea;
+export default forwardRef(TypingArea;
