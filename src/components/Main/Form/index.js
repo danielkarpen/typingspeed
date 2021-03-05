@@ -1,8 +1,8 @@
-import { toKebabCase } from "lib";
+import { removeNonLettersAndSpaces, toKebabCase } from "lib";
 import PropTypes from "prop-types";
 
 const Form = ({ handler, type, label, placeholder, buttonTxt }) => {
-  const kebab = toKebabCase(label);
+  const kebab = toKebabCase(removeNonLettersAndSpaces(label));
 
   return (
     <form className="flex flex-col gap-3 items-center" onSubmit={handler}>
