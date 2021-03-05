@@ -1,4 +1,7 @@
+import db from "db";
 import { Header, Main } from "./components";
+
+console.log(db);
 
 function App() {
   return (

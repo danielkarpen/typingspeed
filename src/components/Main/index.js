@@ -30,6 +30,10 @@ function Main() {
     }
   }, [secsRemaining]);
 
+  function handleKeyUp(event) {
+    console.log(event.target.value);
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -45,7 +49,7 @@ function Main() {
   return (
     <main className="flex flex-col gap-4 items-center mx-auto w-96">
       <Form
-        handler={handleSubmit}
+        submitHandler={handleSubmit}
         label="How Long Should the Test Run?"
         type="number"
         placeholder="secs"
@@ -53,12 +57,15 @@ function Main() {
       />
       <p className="text-2xl">{WPM ? `${WPM} words/min` : secsRemaining}</p>
       <textarea className="bg-gray-200 h-48 w-96" disabled ref={textareaRef} />
-      <Form
-        handler={handleSubmit}
-        label="Enter Your Initials"
-        type="text"
-        buttonTxt="Submit"
-      />
+      {WPM ? (
+        <Form
+          submitHandler={handleSubmit}
+          keyUpHandler={handleKeyUp}
+          label="Enter Your Initials"
+          type="text"
+          buttonTxt="Submit"
+        />
+      ) : null}
     </main>
   );
 }

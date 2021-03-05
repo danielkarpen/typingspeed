@@ -1,15 +1,23 @@
 import { removeNonLettersAndSpaces, toKebabCase } from "lib";
 import PropTypes from "prop-types";
 
-const Form = ({ handler, type, label, placeholder, buttonTxt }) => {
+const Form = ({
+  keyUpHandler,
+  submitHandler,
+  type,
+  label,
+  placeholder,
+  buttonTxt,
+}) => {
   const kebab = toKebabCase(removeNonLettersAndSpaces(label));
 
   return (
-    <form className="flex flex-col gap-3 items-center" onSubmit={handler}>
+    <form className="flex flex-col gap-3 items-center" onSubmit={submitHandler}>
       <label htmlFor={kebab} className="text-2xl">
         {label}
       </label>
       <input
+        onKeyUp={keyUpHandler}
         type={type}
         id={kebab}
         placeholder={placeholder}
@@ -23,13 +31,19 @@ const Form = ({ handler, type, label, placeholder, buttonTxt }) => {
 };
 
 Form.propTypes = {
-  handler: PropTypes.func.isRequired,
+  submitHandler: PropTypes.func.isRequired,
+  keyUpHandler: PropTypes.func,
   type: PropTypes.string,
   label: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   buttonTxt: PropTypes.string,
 };
 
-Form.defaultProps = { type: "text", placeholder: "", buttonTxt: "Submit" };
+Form.defaultProps = {
+  type: "text",
+  placeholder: "",
+  buttonTxt: "Submit",
+  onKeyUpHandler: () => {},
+};
 
 export default Form;
