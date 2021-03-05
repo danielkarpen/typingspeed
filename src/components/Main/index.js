@@ -6,6 +6,7 @@ function Main() {
   const [secsRemaining, setSecsRemaining] = useState(null);
   const [WPM, setWPM] = useState(0);
 
+  const inputRef = useRef(null);
   const textareaRef = useRef();
   const startingSecs = useRef();
 
@@ -23,12 +24,16 @@ function Main() {
   useEffect(() => {
     if (!secsRemaining) {
       setWPM(
-        () => `${calcWPM(textareaRef.current.value, startingSecs.current)} WPM`
+        () => `${calcWPM(textareaRef.current.value, startingSecs.current)}`
       );
       textareaRef.current.blur();
       textareaRef.current.disabled = true;
     }
   }, [secsRemaining]);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, [WPM]);
 
   function handleKeyUp({ target }) {
     target.value = target.value.toUpperCase();
@@ -69,6 +74,7 @@ function Main() {
           label="Enter Your Initials"
           type="text"
           buttonTxt="Submit"
+          ref={inputRef}
         />
       ) : null}
     </main>
