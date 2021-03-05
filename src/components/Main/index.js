@@ -30,8 +30,9 @@ function Main() {
     }
   }, [secsRemaining]);
 
-  function handleKeyUp(event) {
-    console.log(event.target.value);
+  function handleKeyUp({ target }) {
+    target.value = target.value.toUpperCase();
+    target.value = target.value.slice(0, 3);
   }
 
   function handleSubmit(event) {
@@ -56,7 +57,11 @@ function Main() {
         buttonTxt="Go!"
       />
       <p className="text-2xl">{WPM ? `${WPM} words/min` : secsRemaining}</p>
-      <textarea className="bg-gray-200 h-48 w-96" disabled ref={textareaRef} />
+      <textarea
+        className="bg-gray-200 h-48 w-96 focus:bg-gray-900"
+        disabled
+        ref={textareaRef}
+      />
       {WPM ? (
         <Form
           submitHandler={handleSubmit}

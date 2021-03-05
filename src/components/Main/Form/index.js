@@ -21,7 +21,7 @@ const Form = ({
         type={type}
         id={kebab}
         placeholder={placeholder}
-        className="w-24"
+        className="w-24 focus:bg-gray-900"
       />
       <button className="bg-neon-green cursor-pointer h-16 p-2 rounded text-2xl  text-gray-700 w-40 hover:animate-pulse focus:animate-pulse">
         {buttonTxt}
