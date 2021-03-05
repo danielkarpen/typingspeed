@@ -1,3 +1,4 @@
+import db from "db";
 import { calcWPM } from "lib";
 import { useEffect, useRef, useState } from "react";
 import Form from "./Form";
@@ -43,7 +44,17 @@ function Main() {
   function handleInitials(event) {
     event.preventDefault();
 
-    console.log(event.target.elements[0].value);
+    db.collection("scores")
+      .add({
+        initials: event.target.elements[0].value,
+        WPM,
+      })
+      .then((docRef) => {
+        console.log("Document written with ID: ", docRef.id);
+      })
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+      });
   }
 
   function handleTimeStart(event) {
