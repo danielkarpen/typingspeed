@@ -7,11 +7,11 @@ function Main() {
     <>
       <Router>
         <Switch>
-          <Route path="/Test">
+          <Route exact path="/Test">
             <Test />
           </Route>
 
-          <Route path="/">
+          <Route exact path="/">
             <Scores />
           </Route>
         </Switch>

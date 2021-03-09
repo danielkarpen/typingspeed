@@ -1,10 +1,7 @@
 import db from "db";
 import { calcWPM } from "lib";
 import { useEffect, useRef, useState } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
 import Form from "./Form";
-
-<Router></Router>;
 
 function Test() {
   const [secsRemaining, setSecsRemaining] = useState(null);
